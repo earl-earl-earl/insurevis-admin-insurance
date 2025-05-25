@@ -1,0 +1,227 @@
+.pageContainer {
+  /* space-y-6 */
+}
+.pageContainer > *:not([hidden]) ~ *:not([hidden]) {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.pageTitle {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+  font-weight: 600; /* font-semibold */
+  color: #1f2937; /* text-gray-800 */
+}
+
+.statsGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.statCardContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.statInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.statHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.statInfoTitle {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.statInfoValue {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.statInfoDescription {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.statIcon {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background-color: #e6f0ff;
+  color: #0d6efd;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Icon colors - these would ideally be handled by passing a class or style prop to the icon if possible */
+.iconBlue {
+  color: #3b82f6; /* text-blue-500 */
+}
+.iconYellow {
+  color: #f59e0b; /* text-yellow-500 */
+}
+.iconGreen {
+  color: #10b981; /* text-green-500 */
+}
+.iconIndigo {
+  color: #6366f1; /* text-indigo-500 */
+}
+
+.contentGrid {
+  display: grid;
+  gap: 1.5rem; /* gap-6 */
+  grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 */
+}
+
+@media (min-width: 1024px) { /* lg:grid-cols-2 */
+  .contentGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.listContainer {
+  /* space-y-2 */
+}
+.listContainer > *:not([hidden]) ~ *:not([hidden]) {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.listItem {
+  display: flex;
+  gap: 0.875rem;
+  padding: 0.875rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  background-color: #fff;
+  border: 1px solid var(--gray-100);
+}
+
+.listItem:hover {
+  background-color: var(--gray-50);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.listItemLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.listItemContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.25rem;
+}
+
+.listItemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.listItemTitle {
+  font-weight: 600;
+  color: var(--gray-800);
+  font-size: 0.875rem;
+}
+
+.listItemDesc {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+
+.listItemFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.listItemTime {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Status badges */
+.statusBadge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.675rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.statusWarning {
+  background-color: var(--warning-light);
+  color: var(--warning);
+}
+
+.statusDanger {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+.statusInfo {
+  background-color: #e0f2fe;
+  color: #0ea5e9;
+}
+
+.chartContainer {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 80px; /* Explicit height is crucial */
+  border-top: 1px solid #f3f4f6;
+  padding-top: 0.75rem;
+}

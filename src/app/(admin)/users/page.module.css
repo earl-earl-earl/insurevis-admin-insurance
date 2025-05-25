@@ -1,0 +1,282 @@
+.pageContainer {
+  /* space-y-6 */
+}
+.pageContainer > *:not([hidden]) ~ *:not([hidden]) {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pageTitle {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+  font-weight: 600; /* font-semibold */
+  color: #1f2937; /* text-gray-800 */
+}
+
+.actionButtonIcon {
+  width: 1rem; /* w-4 */
+  height: 1rem; /* h-4 */
+  margin-right: 0.5rem; /* mr-2 */
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem; /* gap-4 */
+}
+
+@media (min-width: 768px) { /* md:flex-row md:items-center */
+  .cardHeader {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.cardTitle {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  font-weight: 600; /* font-semibold */
+  color: #374151; /* text-gray-700 */
+}
+
+.filterControls {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.filterControls > *:not([hidden]) ~ *:not([hidden]) {
+  margin-left: 0.5rem; /* space-x-2 */
+  margin-right: 0;
+}
+
+@media (min-width: 768px) { /* md:w-auto */
+  .filterControls {
+    width: auto;
+  }
+}
+
+.searchInput {
+  max-width: 20rem; /* max-w-xs (320px) */
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.statusConfirmed, .statusActive {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+.statusPending {
+  background-color: var(--warning-light);
+  color: var(--warning);
+}
+
+.statusCancelled {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+.actionsCell {
+  /* space-x-1 */
+}
+.actionsCell > *:not([hidden]) ~ *:not([hidden]) {
+  margin-left: 0.25rem;
+  margin-right: 0;
+}
+
+.toggleIconActive {
+  width: 1.25rem; /* w-5 */
+  height: 1.25rem; /* h-5 */
+  color: #10b981; /* text-green-600 */
+}
+
+.toggleIconInactive {
+  width: 1.25rem; /* w-5 */
+  height: 1.25rem; /* h-5 */
+  color: #6b7280; /* text-gray-500 */
+}
+
+.editIcon {
+  width: 1rem; /* w-4 */
+  height: 1rem; /* h-4 */
+}
+
+.deleteButton {
+  color: #dc2626; /* text-red-600 */
+}
+
+.deleteButton:hover {
+  color: #b91c1c; /* hover:text-red-700 */
+}
+
+.deleteIcon {
+  width: 1rem; /* w-4 */
+  height: 1rem; /* h-4 */
+}
+
+.tableCardContent {
+  padding: 0;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* User info styling */
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.userAvatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+.userEmail {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+}
+
+/* Cell styling */
+.idCell {
+  font-family: monospace;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--gray-500);
+}
+
+.metaInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.primaryText {
+  font-weight: 500;
+  color: var(--gray-800);
+}
+
+.secondaryText {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+}
+
+.timeInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  color: var(--gray-600);
+}
+
+/* Status badge styling */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.statusActive {
+  background-color: #ECFDF5;
+  color: #059669;
+}
+
+.statusInactive {
+  background-color: #F3F4F6;
+  color: #6B7280;
+}
+
+/* Action buttons styling */
+.actionsHeader {
+  text-align: center;
+}
+
+.actionsCell {
+  text-align: center;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 0.375rem;
+}
+
+.actionButton {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background: transparent;
+  border: none;
+  color: var(--gray-500);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.actionButton:hover {
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+}
+
+.actionButton[data-tooltip]:hover::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.25rem 0.5rem;
+  background-color: var(--gray-800);
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.deleteAction:hover {
+  background-color: #FEE2E2;
+  color: #DC2626;
+}

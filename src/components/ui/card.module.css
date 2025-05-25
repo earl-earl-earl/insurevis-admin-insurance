@@ -1,0 +1,33 @@
+.card {
+  background-color: #fff; /* bg-white */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+  overflow: hidden; /* overflow-hidden */
+}
+
+.cardHeader {
+  padding: 1.25rem; /* p-4 */
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardTitle {
+  font-size: 1rem; /* text-lg */
+  line-height: 1.5rem;
+  font-weight: 600; /* font-semibold */
+  color: var(--gray-700);
+  margin: 0;
+}
+
+.cardContent {
+  padding: 1.25rem; /* p-4 */
+}
+
+.cardFooter {
+  padding: 1.25rem; /* p-4 */
+  border-top: 1px solid var(--gray-200);
+  background-color: var(--gray-50);
+}

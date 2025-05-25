@@ -1,0 +1,129 @@
+.pageContainer {
+  padding: 1.5rem;
+}
+
+.pageContainer > *:not([hidden]) ~ *:not([hidden]) {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.pageTitle {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.reportControls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.statCardContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.statInfoTitle {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: #6B7280;
+  margin-bottom: 0.25rem;
+}
+
+.statInfoValue {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.statInfoDescription {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #6B7280;
+}
+
+.statIcon {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background-color: #E6F0FF;
+  color: #0D6EFD;
+  border-radius: 0.5rem;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.twoColumnGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .twoColumnGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cardTitle {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.exportButton {
+  background-color: var(--success);
+  color: white;
+  border-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* This adds space between icon and text */
+}
+
+.exportButton:hover {
+  background-color: #0da56f; /* Slightly darker shade of green for hover state */
+}
+
+.exportText {
+  margin-left: 0.25rem; /* Additional spacing if needed */
+}

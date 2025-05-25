@@ -1,0 +1,335 @@
+.pageContainer {
+  /* space-y-6 */
+}
+.pageContainer > *:not([hidden]) ~ *:not([hidden]) {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pageTitle {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+  font-weight: 600; /* font-semibold */
+  color: #1f2937; /* text-gray-800 */
+}
+
+.actionButtonIcon {
+  width: 1rem; /* w-4 */
+  height: 1rem; /* h-4 */
+  margin-right: 0.5rem; /* mr-2 */
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem; /* gap-4 */
+}
+
+@media (min-width: 768px) { /* md:flex-row md:items-center */
+  .cardHeader {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.cardTitle {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  font-weight: 600; /* font-semibold */
+  color: #374151; /* text-gray-700 */
+}
+
+.filterControls {
+  display: flex;
+  gap: 0.75rem; /* gap-3 */
+}
+
+.searchInput {
+  width: 20rem; /* w-80 */
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.tableCardContent {
+  padding: 0;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.searchWrapper {
+  position: relative;
+  max-width: 20rem;
+}
+
+.searchWrapper i {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-500);
+}
+
+.searchInput {
+  padding-left: 2.5rem;
+}
+
+/* Client info styling */
+.clientInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.clientAvatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.clientDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.clientName {
+  font-weight: 600;
+  color: var(--gray-800);
+  font-size: 0.9375rem; /* Increased from default */
+}
+
+.clientEmail, .clientPhone {
+  font-size: 0.8125rem; /* Increased from 0.75rem */
+  color: var(--gray-500);
+  display: flex;
+  align-items: center;
+  gap: 0.375rem; /* Consistent spacing */
+}
+
+/* Policy info styling */
+.policyInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.policyId {
+  font-family: monospace;
+  font-size: 0.875rem; /* Increased from 0.8125rem */
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.policyType {
+  font-size: 0.875rem; /* Increased from 0.8125rem */
+  color: var(--gray-600);
+}
+
+.policyDate {
+  font-size: 0.8125rem; /* Increased from 0.75rem */
+  color: var(--gray-500);
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+/* Add spacing in vehicle badge */
+.vehicleBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--gray-100);
+  border-radius: 0.375rem;
+  font-size: 0.8125rem; /* Increased from 0.75rem */
+  color: var(--gray-700);
+  gap: 0.375rem;
+}
+
+/* Status badge styling */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem; /* Increased from 0.25rem for better readability */
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem; /* Increased from 0.75rem */
+  font-weight: 500;
+}
+
+.statusActive {
+  background-color: #ECFDF5;
+  color: #059669;
+}
+
+.statusInactive {
+  background-color: #F3F4F6;
+  color: #6B7280;
+}
+
+.statusSuspended {
+  background-color: #FEF3C7;
+  color: #D97706;
+}
+
+/* Action buttons styling */
+.actionsHeader {
+  text-align: center;
+}
+
+.actionsCell {
+  text-align: center;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 0.375rem;
+}
+
+.actionButton {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background: transparent;
+  border: none;
+  color: var(--gray-500);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.actionButton:hover {
+  background-color: var(--gray-100);
+  color: var(--gray-700);
+}
+
+/* Add spacing between button icon and text */
+.buttonText {
+  margin-left: 0.5rem; /* More space between icon and text */
+}
+
+.actionButton[data-tooltip]:hover::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.375rem 0.625rem; /* Slightly larger padding */
+  background-color: var(--gray-800);
+  color: white;
+  font-size: 0.8125rem; /* Increased from 0.75rem */
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.deleteAction:hover {
+  background-color: #FEE2E2;
+  color: #DC2626;
+}
+
+.deleteButton {
+  color: #dc2626; /* text-red-600 */
+}
+
+.deleteIcon {
+  width: 1rem; /* w-4 */
+  height: 1rem; /* h-4 */
+}
+
+/* Increase text size for client details */
+.clientName {
+  font-weight: 600;
+  color: var(--gray-800);
+  font-size: 0.9375rem; /* Increased from default */
+}
+
+.clientEmail, .clientPhone {
+  font-size: 0.8125rem; /* Increased from 0.75rem */
+  color: var(--gray-500);
+  display: flex;
+  align-items: center;
+  gap: 0.375rem; /* Consistent spacing */
+}
+
+/* Increase policy info text size */
+.policyId {
+  font-family: monospace;
+  font-size: 0.875rem; /* Increased from 0.8125rem */
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.policyType {
+  font-size: 0.875rem; /* Increased from 0.8125rem */
+  color: var(--gray-600);
+}
+
+.policyDate {
+  font-size: 0.8125rem; /* Increased from 0.75rem */
+  color: var(--gray-500);
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+/* Increase vehicle badge text size */
+.vehicleBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--gray-100);
+  border-radius: 0.375rem;
+  font-size: 0.8125rem; /* Increased from 0.75rem */
+  color: var(--gray-700);
+  gap: 0.375rem;
+}
+
+/* Increase status badge text size */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem; /* Increased from 0.75rem */
+  font-weight: 500;
+}
+
+/* Increase table headers size */
+.tableContainer th {
+  font-size: 0.875rem; /* Ensure table headers are readable */
+}
+
+/* Make action button tooltips more readable */
+.actionButton[data-tooltip]:hover::before {
+  font-size: 0.8125rem; /* Increased from 0.75rem */
+  padding: 0.375rem 0.625rem; /* Slightly larger padding */
+}

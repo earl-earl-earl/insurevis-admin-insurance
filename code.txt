@@ -1,0 +1,600 @@
+West Visayas State University
+COLLEGE OF INFORMATION AND COMMUNICATIONS TECHNOLOGY
+La Paz, Iloilo City, Philippines
+
+INSUREVIS: Convolutional Neural Network (CNN)-Based Mobile
+Application for Automated Car Damage Assessment and Optimized
+Insurance Claims Processing
+
+An Undergraduate Thesis
+
+Presented to the Faculty of the
+College of Information and Communications Technology
+West Visayas State University
+La Paz, Iloilo City
+
+In Partial Fulfillment
+of the Requirements for the Degree
+Bachelor of Science in Information Technology
+
+by
+John Kenneth G. Balayon
+Mark Angelo Q. Servando
+Daniel Noel B. Guillen
+Earl John T. Rafael
+Dave M. Benedicto
+
+June 2025
+
+---
+Approval Sheet
+
+INSUREVIS: Convolutional Neural Network (CNN)-Based Mobile
+Application for Automated Car Damage Assessment and Optimized
+Insurance Claims Processing
+
+An Undergraduate Thesis for the Degree
+Bachelor of Science in Information Technology
+
+by
+John Kenneth G. Balayon
+Mark Angelo Q. Servando
+Daniel Noel B. Guillen
+Earl John T. Rafael
+Dave M. Benedicto
+
+Ms. Janine Defande
+Panel
+
+Dr. Lea M. Gabawa
+Panel
+
+Dr. Cheryn Ann Feliprada
+Panel
+
+Mr. Christian Cadiz
+Panel
+
+Name Here
+Panel
+
+Dr. Ralph Voltaire J. Dayot
+Adviser
+
+---
+Concurred:
+
+Dr. Frank I. Elijorde
+Dept./Div. Chair, [Div/Dept.]
+
+Dr. Ma. Beth S. Concepcion
+Dean
+
+June 2026
+
+Acknowledgment
+
+[Example Content] The researchers would like to express
+their deepest appreciation to the following persons, who in
+one way or another have made this work possible:
+
+[Some content here]
+
+John Kenneth G. Balayon
+Mark Angelo Q. Servando
+Daniel Noel B. Guillen
+Earl John T. Rafael
+Dave M. Benedicto
+
+---
+June 2025
+
+[A. Lastname]; [B. Lastname], “Title Here,” Unpublished
+Undergraduate Thesis, [Degree Program],College of Information
+and Communications Technology, West Visayas State University,
+Iloilo City, Philippines, 2026.
+
+Abstract
+
+[Abstract should not be more than 250 words.]
+
+Keywords: keyword1, keyword2, keyword3
+
+---
+Table of Contents
+
+Approval Sheet ii
+Acknowledgment iii
+Abstract iv
+Table of Contents v
+List of Figures viii
+List of Tables ix
+List of Appendices x
+
+CHAPTER 1 INTRODUCTION TO THE STUDY 1
+Background of the Study and Conceptual Framework 1
+Objectives of the Study 2
+Significance of the Study 3
+Delimitation of the Study 4
+Definition of Terms 5
+
+CHAPTER 2 REVIEW OF RELATED STUDIES 7
+Review of Existing and Related Studies 7
+Current Systems 7
+Related Systems or Solutions 7
+Related Studies 7
+
+CHAPTER 3 RESEARCH DESIGN AND METHODOLOGY 8
+Description of the Proposed Study 8
+Methods and Proposed Enhancements 9
+Topic Title 9
+Components and Design 10
+System Architecture 10
+Software Architecture 10
+Database Design 10
+Procedural Design 10
+Object-Oriented Design 10
+Process Design 10
+System Development Life Cycle 10
+
+CHAPTER 4 RESULTS AND DISCUSSION 11
+Implementation 11
+Development Tools 11
+Hardware Requirements 11
+Software Requirements 11
+Input and Outputs of the Study 11
+Results Interpretation and Analysis 12
+System Evaluation Results 13
+
+CHAPTER 5 SUMMARY, CONCLUSIONS, AND RECOMMENDATIONS 14
+Summary of the Proposed Study Design and Implementation 14
+Summary of Findings 15
+Conclusions 16
+Recommendations 17
+References 18
+Appendices 22
+
+---
+List of Figures
+
+Figure 1. Sample Figure caption 1
+[Right click and Update Field Once Figures are added on the content]
+
+---
+List of Tables
+
+Table 1. Sample Table caption 1
+[Right click and Update Field Once Tables are added on the content]
+
+---
+List of Appendices
+
+Appendix A Sample Appendix 22
+Appendix B Disclaimer 23
+[Note: Right click and Update Field Once Appendices are added on the content. Remove this text when finalized]
+
+---
+CHAPTER 1 INTRODUCTION TO THE STUDY
+
+Background of the Study
+
+The car insurance sector is essential in alleviating financial risks for vehicle owners by covering repair expenses resulting from accidents or damages. Studies indicate that automobile insurance improves the efficiency and timeliness of accident compensation, ensuring that financial burdens are minimized for policyholders [1]. According to Consumer Affairs in 2021, there were approximately 4.2 auto collision insurance claims filed per 100 drivers [2]. According to Bankrate, collision claims are most commonly filed, at an average of 5.8 claims per 100 years of insured coverage on a vehicle [3]. Despite its importance, the traditional process of assessing car damages for insurance claims is often time-consuming and can take weeks or months, costly, and cumbersome, resulting in delays and customer dissatisfaction [4].
+
+Initiating a car insurance claim typically involves promptly notifying your insurance provider about the incident. Subsequently, obtaining a police report is essential, as it serves as an official record of the accident. It's also crucial to document the scene by taking clear photographs of the vehicle's damage and gathering pertinent details from all parties involved. Afterward, the damaged vehicle should be taken to an accredited repair shop for assessment and to obtain a repair estimate [5]. This traditional process is often time-consuming, prone to human error, and inconvenient for the claimant. It requires physical presence, coordination, and approvals, relying on inspectors for manual vehicle damage assessments, leading to long inspections and high costs. Manual inspections are prone to human error, including misjudgments in damage severity or oversight of hidden damages [6]. This subjectivity leads to inconsistent reporting and customer dissatisfaction. The rising global vehicle ownership has led to a surge in insurance claims, intensifying the demand for fast, reliable, and automated damage assessment systems to streamline processes and reduce inefficiencies in traditional methods.
+
+Similar challenges do exist in other industries that rely on visual inspections. For example, in structural engineering, image-based crack detection has demonstrated the efficiency of automated processes over manual assessments. Studies show that high-resolution cameras (10+ megapixels) enable precise damage identification across large surfaces, reducing human error and cost [7]. Image-based damage detection has been successful in fields such as structural engineering, where algorithms and high-resolution cameras can be more accurate than manual inspection. This increases the viability of using computer vision to automate the inspection of vehicle damage in insurance claims. This study underscores the potential of computer vision for car damage assessment.
+
+Computer Vision is a discipline focused on enabling computers to interpret and analyze visual data, including images and videos [8]. The car insurance industry offers several advantages from computer vision which include immediate and more accurate damage evaluations and automated pricing along with simplified claims procedures [9]. One significant capability of computer vision systems is object detection. Object detection is a computer vision technique that identifies objects in an image and locates them using bounding boxes, enabling recognition and localization of multiple objects simultaneously [10]. This particular technique can be used to effectively detect car damage and predict its severity. Predicted car damage severity within each part are then analyzed to determine accurate cost estimation for repairs and faster insurance claims.
+
+This study proposes the development of a mobile application that utilizes computer vision, to automate the damage assessment process, which is a key requirement for claiming car insurance. By applying Region-based convolutional neural networks (R-CNNs), the application will detect, classify, and estimate the cost of damages (e.g., dents, scratches, cracks) much from user uploaded images. This innovation will replace subjective manual evaluations with consistent, data-driven results, significantly reducing processing time and operational costs.
+
+This AI-powered damage assessment system will improve insurance processing workflows by automating the whole claiming process. When implemented, it will reduce claim processing time and also enhance accuracy through standardized evaluations. For car owners, the result is faster transactions and a more simplified claims process, resulting in speed up repairs and reduced delay.
+
+Conceptual Framework
+
+[DIAGRAM DESCRIPTION: Conceptual Framework for InsureVis]
+Input:
+* Damage Car Images
+
+Process:
+* Image Preprocessing
+* R-CNN Model
+* Cost Estimation
+
+Output:
+* Damage Assessment report
+* Estimated Cost
+
+Figure 1: Conceptual Framework
+
+The conceptual framework of InsureVis provides a structured representation of the automated car insurance claim process, incorporating computer vision and machine learning to streamline damage assessment and claim processing. Damaged car images are uploaded to the application and then fed into the processing system encompassing image preprocessing, R-CNN Model, and cost estimation which influences the damage assessment report and the estimated repair cost.
+
+Objectives of the Study
+
+This study aims to develop an innovative solution that automates car damage evaluation and estimation in insurance claims using computer vision. Specifically, this research is sought to answer the following:
+
+1. To develop and implement computer vision models for accurate detection, classification, and segmentation of car damages, and to provide reliable cost estimation for insurance claims.
+2. To design an intuitive interface that allows users to upload photos of damaged vehicles, view detailed damage analysis, and receive an estimated repair cost for insurance claims.
+3. To generate automated damage reports that align with insurance claim requirements.
+4. To assess the application's usability, accuracy, and performance using standard quality metrics, such as those defined by ISO/IEC 25002:2024.
+
+Significance of the Study
+
+The study would be beneficial to the following:
+
+Car Owners.
+The application will allow car owners to easily and quickly file insurance claims by simply submitting images of the damaged vehicle. This gets rid of the need for extensive inspections and shortens the wait time for damage assessment and compensation.
+
+Auto Mechanics and Repair Shops.
+Mechanics will get detailed damage estimates, speeding the repair quotation and approval process. This allows them to maximize processes and begin repairs sooner, resulting in better client satisfaction.
+
+Insurance Companies.
+This system will be beneficial to the Insurance providers from automation of the insurance claim process though faster and more efficient car damage evaluation, and reduced operational cost.
+
+Future Researchers.
+This study shows the potential of computer vision for automated damage assessment and cost estimation, serving as a proof-of-concept for future advances in insurance technology and related businesses. Future studies may expand on this work to improve accuracy, extend it to other vehicle types, or use similar methods in other industries such as estate or maritime insurance.
+
+Delimitation of the Study
+
+The study considers only exterior car damages (i.e., dents, scratches, and cracks) based on user-uploaded images and not internal/mechanical damages. As per the advice of the insurance company, internal damages should be done for the reassessment process for the mechanic.
+
+The study prioritizes the development of the computer vision model (Region-based CNN) for damage detection and cost estimation, implemented into a mobile application as a complete system.
+
+The system will be tested and developed for SUV's, compact cars, and sedans (excluding trucks and jeepneys) due to the availability of the datasets. This limitation ensures ideal performance, as the availability of local parts data for these specific models allows the system to operate within well-defined parameters.
+
+The system provides interfaces for the insurance providers, the mechanics, and the vehicle owners for the convenience of each end, but does not validate claim documents, which must be processed separately by the insurance providers to ensure the validation of important documents.
+
+Definition of Terms
+
+For better understanding, the following terms were defined conceptually and operationally:
+
+Claimant.
+In insurance claiming, this refers to a person or entity who makes a claim for payment from an insurance company due to an accident, illness, damage to property, or other covered event.
+
+Claims Processing.
+Claim processing refers to the systematic procedure followed by an insurance company to evaluate, verify, and approve or reject a policyholder's insurance claim. This process typically includes claim submission, documentation review, damage assessment, cost estimation, and final decision-making.
+In this study, claim processing refers to the automated workflow within the application, where uploaded vehicle damage images undergo AI-based analysis for damage detection and cost estimation.
+
+Computer Vision.
+Refers to a field of artificial intelligence that enables computers to interpret, analyze, and extract meaningful information from visual data, such as images and videos.
+In this study, computer vision is the core technology used in InsureVis to automatically assess vehicle damage from uploaded images.
+
+Cost Estimation.
+Refers to the process of predicting the expected financial expenditure required for vehicle repairs based on the severity and extent of damage. It involves analyzing various factors such as parts replacement, labor costs, and repair complexity to generate an approximate repair cost.
+In this study, cost estimation refers to the automated calculation of repair expenses using the application.
+
+Damage Assessment.
+Refers to the process of evaluating and documenting the extent and nature of damage caused by a disaster, accident, or other event.
+In this study, the process of analyzing and evaluating the extent of physical damage sustained by a vehicle using computer vision and deep learning models.
+
+Insurer.
+Refers to the vehicle insurance company responsible for evaluating damage claims, processing reimbursements, and ensuring financial coverage for policyholders in the event of a car accident or damage.
+
+Mask R-CNN.
+Mask R-CNN (Region-Based Convolutional Neural Network) is an advanced deep learning model used for object detection and instance segmentation.
+In this study, it is the computer vision model utilized by the application to detect and classify vehicle damages in uploaded images. It processes the images by segmenting damaged areas, identifying the severity of damage, and contributing to the automated damage assessment and cost estimation.
+
+---
+CHAPTER 2 REVIEW OF RELATED STUDIES
+
+Review of Existing and Related Studies
+
+This chapter discusses the related literature and studies related to the problems discussed.
+
+Current Systems
+
+Traditional Car Insurance Claims Process and Its Limitations
+The traditional car insurance claims process follows a structured but often cumbersome approach. Typically, the process begins when the policyholder reports an incident to the insurance company, providing necessary documentation such as a police report, photos of the damage, and personal statements. Following this, the insurer conducts an investigation to verify the claim's legitimacy and assess the extent of the damages. This investigation often involves coordination between various stakeholders, including claim adjusters, mechanics, and legal representatives. Once the claim is verified, the insurer provides an estimate for repairs and determines the payout amount. The final step involves either reimbursing the policyholder or directly paying the repair service provider [11].
+
+However, this traditional claims process is fraught with numerous inefficiencies. Research indicates that claimants frequently encounter delays, with some cases taking several months to be resolved. A study found that 30% of claims that exceeded six months were eventually withdrawn due to prolonged processing times [12]. Policyholders often struggle to obtain timely updates on their claims, with many reporting a lack of communication from insurers during the investigative phase. This lack of transparency leads to customer dissatisfaction and reduced trust in insurance providers [13].
+
+Moreover, manual damage assessments introduce subjectivity and inconsistencies. Insurance adjusters rely on their expertise to determine repair costs, but their evaluations may vary significantly, leading to disputes between claimants and insurers. Some claimants have reported that their insurance providers underestimated repair costs, forcing them to seek legal recourse or file complaints to receive fair compensation [14]. Additionally, fraud detection measures within traditional claims handling often lead to unnecessary scrutiny of valid claims, further exacerbating delays [15].
+
+From a financial perspective, insurers also incur high operational costs due to the labor-intensive nature of traditional claims processing. The need for in-person inspections, extensive paperwork, and multiple layers of approvals increases administrative expenses, ultimately affecting the profitability of insurance firms [16].
+
+Given the inefficiencies in traditional insurance claims processing, integrating artificial intelligence and computer vision through convolutional neural networks (CNNs) presents a transformative solution. Our proposed INSUREVIS mobile application aims to streamline claims processing by automating damage assessment through AI-powered image analysis. By leveraging CNNs, the system can detect, classify, and estimate repair costs for damages such as dents, scratches, and cracks with greater accuracy and consistency, eliminating human subjectivity [17].
+
+Furthermore, the digitalization of the claims process will enable real-time assessments and immediate claim approvals, significantly reducing processing times. The integration of a mobile application also enhances accessibility, allowing claimants to submit claims remotely without requiring in-person inspections. This not only improves user experience but also reduces operational costs for insurers by minimizing reliance on manual labor [18].
+
+Compared to the traditional system, AI-driven claims processing offers substantial improvements in efficiency, accuracy, and cost-effectiveness. Policyholders benefit from faster claims resolutions, increased transparency, and fairer assessments, while insurers can enhance operational efficiency and reduce fraud-related losses. Ultimately, the transition from conventional claims handling to AI-based automation represents a significant step toward modernizing the insurance industry.
+
+Computer Vision in Damage Assessment
+Computer vision has emerged as a powerful tool for damage assessment across various fields, leveraging artificial intelligence (AI) and machine learning (ML) to automate the identification, classification, and quantification of structural damages. The adoption of convolutional neural networks (CNNs) has significantly enhanced the accuracy and efficiency of visual damage detection systems. Studies have demonstrated that computer vision-based damage assessment reduces human subjectivity, minimizes inspection time, and improves decision-making in infrastructure maintenance and disaster response [19].
+
+Traditional damage assessment methods rely heavily on manual inspections, which are time-consuming, costly, and prone to human error. In contrast, automated systems powered by deep learning can analyze large datasets of images to detect anomalies with high precision. Research in this domain has explored various applications, including pavement distress detection, seismic damage evaluation, and disaster impact assessment using remote sensing images [20][21].
+
+Recent studies have applied CNNs to pavement distress detection, where deep learning models such as YOLO (You Only Look Once) and Faster R-CNN were trained to identify cracks, potholes, and surface deformations from road images. These models achieved high accuracy in detecting damages and exhibited strong generalization capabilities when tested on different datasets [22]. Similarly, deep learning-based seismic damage assessment has proven effective in evaluating the structural integrity of buildings after earthquakes. A study proposed a hybrid framework that integrates CNNs with machine learning models to predict the severity of damage, achieving correlation coefficients above 0.98 with actual damage indicators [23].
+
+In the context of disaster damage assessment, researchers have employed change detection techniques using high-resolution satellite imagery. Vision-based models such as DAVI (Disaster Assessment with Vision foundation model) have been developed to analyze before-and-after disaster images, detecting affected areas without the need for ground-truth labels. This approach has demonstrated robustness across diverse geographical regions and disaster types, including earthquakes, floods, and wildfires [24].
+
+Vehicle damage assessment is another area where computer vision is making significant strides. Multi-view inspection techniques have been proposed to enhance the accuracy of car damage detection. A novel approach combines single-view CNN models with 3D representation, allowing the system to integrate multiple images taken from different angles. This method reduces false positives by 96% and minimizes duplicate damage detections by nearly 99%, highlighting the advantages of multi-view over single-view damage assessment [25].
+
+The integration of computer vision into car damage assessment presents several advantages over traditional methods. Conventional approaches rely on human inspectors, leading to inconsistencies and potential biases in damage evaluation. Moreover, the manual process requires significant time and financial resources, further burdening insurance companies and claimants [26]. By leveraging CNNs, the proposed INSUREVIS mobile application offers a standardized, data-driven approach to car damage assessment, reducing processing times and operational costs while improving the accuracy of claims evaluations.
+
+The automation of damage detection not only accelerates claims processing but also enhances customer satisfaction by providing transparent and objective assessments. Additionally, INSUREVIS ensures accessibility for vehicle owners, enabling them to submit damage reports in real-time without requiring physical inspections. Compared to traditional methods, AI-driven solutions eliminate the need for manual documentation, streamline insurance approvals, and minimize fraudulent claims through advanced pattern recognition techniques [27].
+
+Computer vision-based damage assessment represents a transformative shift in the insurance industry, offering substantial improvements in efficiency, accuracy, and cost-effectiveness. The development of AI-powered applications like INSUREVIS demonstrates the potential of modern technology in revolutionizing conventional processes, paving the way for future advancements in automated insurance claims processing.
+
+Convolutional Neural Networks (CNNs) in Image Classification
+Convolutional Neural Networks (CNNs) have significantly advanced the field of image classification by providing robust and automated feature extraction capabilities. Traditional machine learning approaches often relied on handcrafted features, which were susceptible to variations in lighting, angle, and scale. However, CNNs have revolutionized image classification by automatically learning hierarchical features directly from raw image data, thus improving accuracy and generalization across different datasets.
+
+Several studies have demonstrated the effectiveness of CNNs in various domains of image classification. For instance, in the study by [28], CNN-based architectures were employed to classify different types of food images. The research demonstrated that CNNs could efficiently distinguish between food categories with high accuracy due to their ability to capture spatial hierarchies in images. Similarly, the study in [29] applied CNNs for melanoma detection, achieving superior performance compared to conventional machine learning methods. By utilizing multiple convolutional layers, the model was able to extract fine-grained details, aiding in the early diagnosis of skin cancer.
+
+Another significant application of CNNs in image classification is in plant recognition. The study in [30] explored the application of CNNs in plant species identification and found that CNN-based models outperformed traditional image processing techniques. By leveraging large datasets, the model was capable of learning complex patterns in leaf structures, demonstrating CNNs' adaptability in recognizing subtle differences between species. Likewise, research in [31] utilized CNNs for robust face analysis, showcasing the model's efficiency in distinguishing facial expressions and identity verification. The study emphasized the importance of deep learning in automating face recognition tasks, which have applications in security and user authentication systems.
+
+CNNs have also been employed in emotion recognition, as demonstrated in [32], where a deep learning model was trained to classify human emotions based on facial expressions. This study highlighted CNNs' ability to analyze intricate facial patterns and expressions, leading to high classification accuracy. In a similar vein, [33] developed a CNN-based sign language recognition system, which significantly improved the accuracy of gesture-based communication by learning features from hand gesture images.
+
+Furthermore, research in [34] investigated the use of CNNs for image recognition in general applications, reinforcing the adaptability and robustness of CNN models in diverse fields. The study found that deep convolutional layers enhance feature extraction, making CNNs a preferred choice for tasks requiring high-level image understanding.
+
+The integration of CNNs into car damage assessment and insurance claims processing presents a significant advancement in the insurance industry. Traditional manual inspections are prone to subjectivity, human error, and time inefficiencies. By leveraging CNNs for automated damage assessment, our proposed INSUREVIS mobile application will enhance accuracy, reduce processing time, and minimize operational costs for insurance providers. Our mobile application's ability to classify and estimate car damage severity from images ensures a standardized evaluation process, eliminating biases associated with manual assessments.
+
+Additionally, the implementation of CNNs in our proposed mobile application streamlines the documentation process required for insurance claims. By automating the assessment and report generation, claimants can experience a seamless and efficient claims process, improving customer satisfaction. The findings from previous studies highlight CNNs' effectiveness in various image classification tasks, reinforcing their suitability for deployment in the insurance industry for damage evaluation.
+
+Overall, INSUREVIS contributes to the modernization of insurance claims processing by demonstrating the practical application of CNNs beyond traditional image classification domains. The proposed system sets a foundation for further advancements in AI-driven automation, ultimately transforming the insurance sector with improved accuracy, efficiency, and customer experience.
+
+---
+CHAPTER 3 RESEARCH DESIGN AND METHODOLOGY
+
+Description of the Proposed Study
+
+This study proposes the development of a CNN-based mobile application for automating car damage assessment, cost estimation and insurance claims processing which would significantly assist car owners and insurance providers in optimizing the claims process. The application makes it convenient for car owners to document damages present on their vehicles with ease and accuracy, thereby eliminating traditional delays and potential subjectivity in manual assessments. Additionally, this application will serve as a tool for insurance companies to expedite claims processing, fostering innovation in insurance operations. Furthermore, the app can assist users in understanding potential repair expenses by providing automated estimates.
+
+During the preparation phase of the study, the researchers sought guidance from a specialist with expertise in car insurance claims and obtained and analyzed the required dataset.
+
+During the implementation phase of the study, the key processes include developing the Mask R-CNN model, designing the cost estimation algorithm, and developing the mobile application to integrate and deploy both the model and algorithm.
+
+During the evaluation phase of the study, the researchers focused on assessing the accuracy of the damage detection model and the reliability of the cost estimation algorithm by collecting and analyzing relevant data.
+
+Methods and Proposed Enhancements
+
+This study aimed to develop a mobile application leveraging computer vision to automate car damage detection, repair cost estimation, and insurance claims processing which would significantly assist car owners and insurance providers in optimizing the claims process. The traditional methods of assessing vehicular damage for insurance claims rely heavily on manual inspections conducted by insurance adjusters, a process full of subjectivity, inconsistency, and delays. These workflows often requires car owners to coordinate with multiple stakeholders such as law enforcement for accident reports and accredited repair shops for cost estimated that result in bureaucratic bottlenecks and prolonged resolution times. Moreover, manual evaluations are susceptible to human error, such as misjudging damage severity or overlooking hidden structural issues, which can lead to disputes between insurers and claimants. To address these challenges, the study introduces the development of a mobile application that leverages Mask R-CNN to detect, classify, and segment car damage (e.g., dents, scratches, cracks) from user-uploaded images. The model's precision in localizing damage regions ensures objective assessments, eliminating variability inherent in human evaluations.
+
+The Mask Region-based Convolutional Neural Network (Mask R-CNN) is an advanced deep learning architecture that extends the capabilities of Faster R-CNN by incorporating pixel-level instance segmentation, making it uniquely suited for precise object detection and localization in complex visual tasks such as car damage assessment.
+
+Preparation
+The study needs a consultation with a specialist in vehicle damage assessment, particularly an expert in insurance claims processing. The selected consultant was Mrs. Glenda Palomero, who is a claims officer at Standard Insurance Co. Inc., Iloilo. During the consultation, they discussed the processes and the documents needed to claim car insurance.
+
+The researchers will also consult with specialists in automobile repair estimation. The consultation helped in understanding the damage assessment and cost estimation processes.
+
+The dataset for the training and validating the CNN model was curated from Roboflow’s publicly available “Car Damage” dataset version 3. This dataset contains 1,816 annotated images of vehicles with exterior damage, including dents, scratches, and cracks.
+
+Implementation
+The Mask R-CNN model was developed and trained utilizing Python as the primary programming language, selected for its extensive ecosystem of machine learning libraries and frameworks. The architecture was constructed through systematic deep learning methodologies, with image preprocessing tasks (e.g., resizing, normalization, and augmentation) executed programmatically to ensure compatibility with input specifications.
+
+The study also aims to have an intuitive user interface that allows users to upload photos of damaged vehicles, view detailed damage analysis, and receive an estimated repair cost for insurance claims. The mobile application was developed using Flutter that enables cross-platform development, allowing the app to run seamlessly across different devices.
+
+The cost estimation was designed to determine the extent of vehicle damage, assess the necessary repairs, and provide an accurate estimate of the associated costs based on predefined criteria and industry standards.
+
+Evaluation
+[CONTENT FOR EVALUATION REQUIRED]
+
+Components and Design
+
+System Architecture
+
+[DIAGRAM: Figure 2. InsureVis System Architecture]
+Main Components:
+1.  User (Mobile App User)
+2.  Flutter Frontend (Mobile Application Interface)
+3.  InsureVis Backend (Server-side logic, AI model)
+4.  Firebase (Authentication, Database/Storage)
+5.  Insurance Company (External entity receiving claims)
+
+Flow:
+*   User interacts with Flutter Frontend:
+    *   Uploads Damaged Car Image
+    *   Uploads Required Documents
+    *   User Login
+*   Flutter Frontend communicates with InsureVis Backend:
+    *   Sends image to backend.
+    *   Receives Estimation Result.
+    *   Receives Claim Updates (from Insurance Company via Backend).
+*   InsureVis Backend processes data:
+    *   Authentication (via Firebase): Login validation.
+    *   Image Preprocessing: Prepares image for the model.
+    *   Trained Mask R-CNN Model: Performs severity assessment.
+    *   Cost Estimation: Calculates estimated repair cost based on severity.
+    *   Report Generation: Compiles image, assessment, cost, required documents.
+    *   Stores Reports (via Firebase).
+    *   Submits Report to Insurance Company.
+*   Firebase:
+    *   Handles login validation.
+    *   Stores reports.
+*   Insurance Company:
+    *   Receives report submission.
+    *   Sends Claim Updates (presumably back to the system/user).
+
+Figure 2. InsureVis System Architecture
+
+Figure 2 is system architecture showcases how InsureVis is made and how different components are interacting with each other. To start, the user will fill up necessary information for insurance claims, submit required documents and finally upload damaged car images on the front end and it is then sent to the back end. The backend will preprocess the damaged car images and feed it to the train Mask R-CNN Model wherein it will be assessed and produce severity assessment. The severity assessment is then used to estimate the cost of the damage and then compiled together with the required documents to produce a claims submission to the insurance company.
+
+Procedural Design
+
+[DIAGRAM: Figure 3: Procedural Design - Flowchart for InsureVis]
+1.  Start
+2.  Capture Image (User)
+3.  Gather Required Documents (User)
+4.  Preprocess Image (System)
+5.  R-CNN Model analyzes image (System)
+6.  Assessment Successful? (Decision Point)
+    *   If NO: Record Assessment Error. (Process may loop or require user intervention - not fully specified here)
+    *   If YES:
+        1.  Generate Report (System - includes image, assessment, documents)
+        2.  Store Report in Database (System)
+7.  Send Assessment (Report) to Insurance Company (System)
+8.  End
+
+Figure 3: Procedural Design
+
+The figure 3 illustrates a procedural flowchart for InsureVis. The process starts by capturing an image and gathering associated required documents. The captured image then undergoes preprocessing before being analyzed using an R-CNN (Region-based Convolutional Neural Network) Model. A decision point follows, checking if the assessment based on the model's output was successful. If the assessment is unsuccessful, an assessment error is recorded. If the assessment is successful, a report is being generated, incorporating information from the required documents, and stored in a cloud database. Following the successful generation and storage of the report, the assessment is automatically sent to the insurance company. The process then formally ends.
+
+Object-Oriented Design
+
+[DIAGRAM: Figure 4: InsureVis UML - Use Case Diagram]
+Actors:
+*   User
+*   Backend System
+*   Insurance Company (implied interaction with submitted claim)
+
+Use Cases (Primary):
+*   Fill claim information (User)
+*   Upload required documents (User) <<include>> (Implied by compile and submit)
+*   Upload car images (User) <<include>> (Implied by compile and submit)
+*   Preprocess car images (Backend System) <<extend>> (From Upload car images)
+*   Assess damage severity (Backend System) <<extend>> (From Preprocess car images)
+*   Estimate repair cost (Backend System) <<extend>> (From Assess damage severity)
+*   Compile and submit claim (User initiates, system compiles)
+
+(The diagram shows <<include>> from "Upload required documents" and "Upload car images" to an implicit "Submit Claim Information" or similar use case initiated by the User. "Compile and submit claim" then acts as a central use case.)
+
+Figure 4: InsureVis UML - Use Case Diagram
+
+In Figure 4, The user fills in the necessary claim information and uploads the required documents, such as an insurance policy and accident report. Additionally, the user provides images of the damaged car, which are then processed by the system to prepare them for analysis. The CNN model assesses the severity of the damage based on the preprocessed images and then estimates the repair costs accordingly. Once all the necessary details, including claim information, documents, and cost estimation, are compiled, the system submits the final claim to the insurance company for review and approval.
+
+Methodology
+
+System Development Life Cycle
+The development of InsureVis adopted the Agile Software Development Life Cycle because of its flexibility and adaptability. Using the Agile SDLC the study will be divided into sprints and will have 6 phases: Define, Design, Develop, Test, Review, and Deploy. In the define phase, stakeholders refined requirements and prioritized user stories. Design phase involves architectural planning and UI wireframing to align technical solutions with user needs. Development phase is focused on implementing the plan to solve the problem such as training the computer vision model and app development. The test phase will determine whether that solution works properly. Review phase is marked by retrospective meetings to identify bottlenecks and adjust backlog priorities. And lastly deploy phase, integrating deliverables into the main repository via GitHub, with incremental feature releases.
+
+---
+CHAPTER 4 RESULTS AND DISCUSSION
+
+Implementation
+
+Development Tools
+[Content Here] [CONTENT FOR DEVELOPMENT TOOLS REQUIRED]
+
+Hardware Requirements
+[Minimum and Recommended Specifications, include summary table] [CONTENT FOR HARDWARE REQUIREMENTS REQUIRED]
+
+Software Requirements
+[Development and Deployment Software Requirements] [CONTENT FOR SOFTWARE REQUIREMENTS REQUIRED]
+
+Input and Outputs of the Study
+[Screenshots] [SCREENSHOTS AND DESCRIPTIONS REQUIRED]
+
+Results Interpretation and Analysis
+Topic Title
+[Content Here] [CONTENT FOR RESULTS INTERPRETATION AND ANALYSIS REQUIRED]
+
+System Evaluation Results
+Topic Title
+[Content Here] [CONTENT FOR SYSTEM EVALUATION RESULTS REQUIRED]
+
+---
+CHAPTER 5 SUMMARY, CONCLUSIONS, AND RECOMMENDATIONS
+
+Summary of the Proposed Study, Design and Implementation
+Topic Title
+[Content Here] [CONTENT FOR SUMMARY OF PROPOSED STUDY REQUIRED]
+
+Summary of Findings
+[Content Here] [CONTENT FOR SUMMARY OF FINDINGS REQUIRED]
+
+Conclusions
+[Content Here] [CONTENT FOR CONCLUSIONS REQUIRED]
+
+Recommendations
+[Content Here] [CONTENT FOR RECOMMENDATIONS REQUIRED]
+
+---
+References
+
+[1] J. D. Cummins, R. D. Phillips, and M. A. Weiss, The Incentive Effects of No-Fault Automobile Insurance, Wharton School, University of Pennsylvania; College of Business, Georgia State University; Department of Risk Management and Insurance, Temple University, Feb. 26, 2001.
+[2] "Car insurance claims statistics," ConsumerAffairs. [Online]. Available: https://www.consumeraffairs.com/insurance/car-insurance-claims-statistics.html. [Accessed: 12-Dec-2024].
+[3] "Auto insurance statistics," Bankrate. [Online]. Available:https://www.bankrate.com/insurance/car/auto-insurance-statistics/. [Accessed: 12-Dec-2024].
+[4] W. Zhang, “Automatic Car Damage Assessment System: Reading and Understanding Videos as Professional Insurance Inspectors”, AAAI, vol. 34, no. 09, pp. 13646-13647, Apr. 2020.
+[5] Α. Τ. Mohamad, N. A. Abdullah, S. Ahmad, and G. B. Francis, “Car damage severity assessment using supervised deep learning,” Advances in Computer Science Research, pp. 308-318, 2024. doi:10.2991/978-94-6463-589-8_28
+[6] R. Publico, “Car insurance claim process in the Philippines (2023),” Car Insurance Claim Process in the Philippines (2023), https://www.moneymax.ph/car-insurance/articles/filing-car-insurance-claim-philippines (accessed Mar. 12, 2025).
+[7] A. Mohan and S. Poobal, “Crack detection using image processing: A critical review and analysis,” Alexandria Engineering Journal, vol. 57, no. 2, pp. 787-798, Jun. 2018, doi: https://doi.org/10.1016/j.aej.2017.01.020.
+[8] J. Brownlee, “A gentle introduction to Computer Vision,” MachineLearningMastery.com, https://machinelearningmastery.com/what-is-computer-vision/ (accessed Mar. 12, 2025).
+[9] “6 use cases of computer vision in insurance: Computer Vision Insurance benefits: Fraud detection,” Lumenalta, https://lumenalta.com/insights/6-use-cases-of-computer-vision-in-insurance (accessed Mar. 12, 2025).
+[10] G. Boesch, “Object detection: The definitive 2025 guide,” viso.ai, https://viso.ai/deep-learning/object-detection/ (accessed Mar. 15, 2025).
+[11] M. Steenkamp, F. J. Mostert, and J. H. Mostert, "The Claims Handling Process of Motor Vehicle Insurance," Corporate Ownership & Control, vol. 7, no. 1, 2009.
+[12] ASIC, "A Review of Car Insurance Claim Investigations," Report 621, 2019.
+[13] A. Bond and M. Stone, "How the Automotive Insurance Claims Experience Affects Customer Retention," Journal of Financial Services Marketing, vol. 9, no. 2, pp. 160-171, 2004.
+[14] ASIC, "Roadblocks and Roundabouts: A Review of Car Insurance Claim Investigations," 2019.
+[15] S. Viaene and G. Dedene, "Insurance Fraud: Issues and Challenges," The Geneva Papers on Risk and Insurance, vol. 29, no. 2, pp. 313-333, 2004.
+[16] R. A. Derrig and S. Tennyson, "The Impact of Rate Regulation on Claims Evidence from Massachusetts Automobile Insurance," Casualty Actuarial Society, 2008.
+[17] Y. Hsu, Y. Shiu, P. Chou, and Y. Chen, "Vehicle Insurance and the Risk of Road Traffic Accidents," Transportation Research Part A, vol. 74, pp. 201-209, 2015.
+[18] Alma Cohen and Rajeev Dehejia, "The Effect of Automobile Insurance and Accident Liability Laws on Traffic Fatalities," NBER Working Paper No. 9602, 2003.
+[19] A. Islam Khan and S. Al-Habsib, "Machine Learning in Computer Vision," Procedia Computer Science, vol. 167, pp. 1444-1451, 2020.
+[20] S. Cano-Ortiz et al., "An End-to-End Computer Vision System Based on Deep Learning for Pavement Distress Detection," Construction and Building Materials, vol. 416, 2024.
+[21] Y. Xu et al., "Computer-Vision and Machine-Learning-Based Seismic Damage Assessment of Reinforced Concrete Structures," Buildings, vol. 13, no. 1258, 2023.
+[22] R. E. van Ruitenbeek and S. Bhulai, "Multi-View Damage Inspection Using Single-View Damage Projection," Machine Vision and Applications, vol. 33, no. 46, 2022.
+[23] K. Ahn et al., "Generalizable Disaster Damage Assessment via Change Detection with Vision Foundation Model," ΑΑΑΙ, 2025.
+[24] S. T. Ataei et al., "Vision-Based Autonomous Structural Damage Detection Using Data-Driven Methods," University of Tehran, 2025.
+[25] J. Lu et al., "Evaluation of Pork Color by Using Computer Vision," Meat Science, vol. 56, pp. 57-60, 2000.
+[26] F. Kurtulmus and I. Kavdir, "Detecting Corn Tassels Using Computer Vision and Support Vector Machines," Expert Systems with Applications, vol. 41, pp. 7390-7397, 2014.
+[27] J. Dandois and E. C. Ellis, "Remote Sensing of Vegetation Structure Using Computer Vision," Remote Sensing, vol. 2, pp. 1157-1176, 2010.
+[28] H. Kagaya, K. Aizawa, and M. Ogawa, "Food Detection and Recognition Using Convolutional Neural Network," in Proceedings of the 22nd ACM International Conference on Multimedia (MM '14), Orlando, FL, USA, Nov. 2014. doi: 10.1145/2647868.2654970.
+[29] E. Nasr-Esfahani, S. Samavi, N. Karimi, S. M. R. Soroushmehr, M. H. Jafari, K. Ward, and K. Najarian, "Melanoma Detection by Analysis of Clinical Images Using Convolutional Neural Network," in 2016 IEEE International Conference on Image Processing (ICIP), Phoenix, AZ, USA, Sep. 2016. doi: 10.1109/ICIP.2016.7532334.
+[30] H. Yalcin and S. Razavi, "Plant Classification using Convolutional Neural Networks," in 2016 Signal Processing and Communications Applications Conference (SIU), Zonguldak, Turkey, May 2016. doi: 10.1109/SIU.2016.7495926.
+[31] B. Fasel, "Robust Face Analysis using Convolutional Neural Networks," in Proceedings of the 16th International Conference on Pattern Recognition (ICPR), Quebec City, QC, Canada, 2002. doi: 10.1109/ICPR.2002.1044822.
+[32] V. Pomazan, I. Tvoroshenko, and V. Gorokhovatskyi, "Development of an Application for Recognizing Emotions Using Convolutional Neural Networks," International Journal of Academic Information Systems Research (IJAISR), vol. 7, no. 7, pp. 25-36, Jul. 2023. [Online]. Available: www.ijeais.org/ijaisr.
+[33] L. Pigou, S. Dieleman, P.-J. Kindermans, and B. Schrauwen, "Sign Language Recognition Using Convolutional Neural Networks," in Computer Vision ECCV 2014 Workshops, Zurich, Switzerland, 2014, pp. 572-578.
+[34] S. Hijazi, R. Kumar, and C. Rowen, "Using Convolutional Neural Networks for Image Recognition," Cadence Design Systems, 2015. [Online]. Available: www.cadence.com.
+
+---
+[REFERENCE FORMATTING EXAMPLES - Not part of the main thesis content, but formatting guidance from OCR page 60-62]
+
+[1] Placeholder Image | Elementor Developers. [Online].
+Available:https://developers.elementor.com/docs/hooks/placeholder-image/. [Accessed: Jan. 15, 2024].
+
+Here are examples of IEEE citation styles for various types of sources:
+
+Journal Article:
+Format:
+[1] A. Author, "Title of the Article," Title of the Journal, vol. x, no. x, pp. xxx-xxx, Month, Year.
+Example:
+[1] J. Smith, "Advancements in Artificial Intelligence," IEEE Transactions on Neural Networks and Learning Systems, vol. 28, no. 3, pp. 512-525, Mar. 2021.
+
+Conference Proceedings:
+Format:
+[1] A. Author, "Title of the Paper," in Title of the Conference, Year, pp. xxx-xxx.
+Example:
+[1] R. Johnson, "Improving Energy Efficiency in Buildings," in Proceedings of the IEEE International Conference on Sustainable Energy Technologies, 2019, pp. 45-52.
+
+Book:
+Format:
+[1] A. Author, Title of the Book. Publisher, Year.
+Example:
+[1] K. Johnson, Introduction to Machine Learning. Springer, 2020.
+
+Website:
+Format:
+[1] "Title of the Webpage," Title of the Website. [Online]. Available: URL. [Accessed: Month Day, Year].
+Example:
+[1] "About Us," OpenAI. [Online]. Available: https://openai.com/about. [Accessed: Jan. 15, 2024].
+
+News Article:
+Format:
+[1] A. Author, "Title of the Article," Title of the Newspaper/Magazine, Month Day, Year.
+Example:
+[1] J. Doe, "New Study Shows Effects of Climate Change," The New York Times, Jul. 5, 2023.
+
+Unpublished Thesis:
+Format:
+[1] A. Author, "Title of the Thesis," Master's/Ph.D. thesis, Abbrev. Dept., Abbrev. Univ., City, Country, Year.
+Example:
+[1] S. Johnson, "Analysis of Cryptographic Algorithms," Ph.D. thesis, Dept. of Computer Science, Univ. of California, Berkeley, USA, 2020.
+---
+
+Appendices
+
+Appendix A Sample Appendix
+[CONTENT FOR APPENDIX A REQUIRED]
+
+Appendix # Disclaimer
+
+This research project and its corresponding documentation entitled “[Title Here]” is submitted to the College of Information and Communications Technology, West Visayas State University, in partial fulfillment of the requirements for the degree, [Degree Program]. It is the product of our own work, except where indicated text.
+
+We hereby grant the College of Information and Communications Technology permission to freely use, publish in local or international journal/conferences, reproduce, or distribute publicly the paper and electronic copies of this software project and its corresponding documentation in whole or in part, provided that we are acknowledged.
+
+[Author Firstname MI. Lastname]
+[Author Firstname MI. Lastname]
+[Author Firstname MI. Lastname]
+[Author Firstname MI. Lastname]
+[Author Firstname MI. Lastname]
+
+June 2025
