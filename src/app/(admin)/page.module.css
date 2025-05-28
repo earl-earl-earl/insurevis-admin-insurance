@@ -283,3 +283,23 @@
     font-size: 1rem;
   }
 }
+
+/* Redirect loading styles */
+.redirectContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.redirectContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.redirectSpinner {
+  color: #0D6EFD;
+}
