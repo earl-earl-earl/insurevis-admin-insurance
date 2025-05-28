@@ -2,7 +2,6 @@
 
 // app/(admin)/page.tsx
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { useState } from 'react';
 import {
   AreaChart, Area,
   LineChart, Line,
@@ -20,13 +19,6 @@ const claimsData = [
   { name: 'May', claims: 110 },
   { name: 'Jun', claims: 125 },
   { name: 'Jul', claims: 132 },
-];
-
-const accuracyData = [
-  { name: 'Week 1', value: 91.5 },
-  { name: 'Week 2', value: 92.3 },
-  { name: 'Week 3', value: 93.7 },
-  { name: 'Week 4', value: 94.2 },
 ];
 
 const processingData = [
