@@ -11,6 +11,7 @@ export default function AdminPage() {
     // Redirect to dashboard by default
     router.replace('/dashboard');
   }, [router]);
+  
   return (
     <div className={styles.redirectContainer}>
       <div className={styles.redirectContent}>
