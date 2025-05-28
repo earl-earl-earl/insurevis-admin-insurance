@@ -67,3 +67,302 @@
   height: 1rem;
 }
 
+/* User Profile Dropdown */
+.userProfile {
+  position: relative;
+}
+
+.profileButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  color: var(--gray-700);
+}
+
+.profileButton:hover {
+  background-color: var(--gray-100);
+}
+
+.avatarContainer {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: #0D6EFD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.875rem;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.125rem;
+}
+
+.userName {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--gray-800);
+  line-height: 1;
+}
+
+.userEmail {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  line-height: 1;
+}
+
+.dropdownIcon {
+  font-size: 0.75rem;
+  transition: transform 0.15s ease;
+  color: var(--gray-500);
+}
+
+.dropdownIcon.rotated {
+  transform: rotate(180deg);
+}
+
+.profileDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  min-width: 200px;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--gray-700);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdownItem:hover {
+  background-color: var(--gray-50);
+}
+
+.dropdownItem i {
+  width: 1rem;
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+.logoutItem {
+  color: #dc2626;
+}
+
+.logoutItem:hover {
+  background-color: #fef2f2;
+}
+
+.logoutItem i {
+  color: #dc2626;
+}
+
+.dropdownDivider {
+  height: 1px;
+  background-color: var(--gray-200);
+  margin: 0.25rem 0;
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.15s ease;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 400px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: scaleIn 0.15s ease;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1.5rem 0;
+}
+
+.modalTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin: 0;
+}
+
+.modalCloseButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: none;
+  color: var(--gray-400);
+  cursor: pointer;
+  border-radius: 0.375rem;
+  transition: all 0.15s ease;
+}
+
+.modalCloseButton:hover {
+  background-color: var(--gray-100);
+  color: var(--gray-600);
+}
+
+.modalBody {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.modalIcon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #fef2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: #dc2626;
+  font-size: 1.5rem;
+}
+
+.modalMessage {
+  color: var(--gray-600);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.modalFooter {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1.5rem;
+  justify-content: flex-end;
+}
+
+.cancelButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--gray-300);
+  background: white;
+  color: var(--gray-700);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cancelButton:hover {
+  background-color: var(--gray-50);
+  border-color: var(--gray-400);
+}
+
+.confirmButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #dc2626;
+  color: white;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.confirmButton:hover {
+  background: #b91c1c;
+}
+
+.confirmButton i {
+  font-size: 0.875rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .userInfo {
+    display: none;
+  }
+  
+  .profileDropdown {
+    min-width: 180px;
+  }
+  
+  .modalContent {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  }
+  
+  .modalFooter {
+    flex-direction: column-reverse;
+  }
+  
+  .cancelButton,
+  .confirmButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

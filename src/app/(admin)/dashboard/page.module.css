@@ -1,0 +1,285 @@
+.pageContainer {
+  /* space-y-6 */
+  background: var(--gray-50);
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+.pageContainer > *:not([hidden]) ~ *:not([hidden]) {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.pageTitle {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+  font-weight: 600; /* font-semibold */
+  color: #1f2937; /* text-gray-800 */
+}
+
+/* Card shadow and rounded corners */
+.Card, .cardHeader, .cardTitle, .cardContent, .CardContent {
+  box-shadow: 0 2px 8px 0 rgba(16,30,54,0.06);
+  border-radius: 0.75rem;
+  background: #fff;
+}
+
+/* Stat card improvements */
+.statCardContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 1px 4px 0 rgba(16,30,54,0.04);
+}
+
+.statInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.statHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.statInfoTitle {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.statInfoValue {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.statInfoDescription {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.statIcon {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background-color: #E6F0FF;
+  color: #0D6EFD;
+  border-radius: 0.5rem;
+}
+
+/* Icon colors - these would ideally be handled by passing a class or style prop to the icon if possible */
+.iconBlue {
+  color: #3b82f6; /* text-blue-500 */
+}
+.iconYellow {
+  color: #f59e0b; /* text-yellow-500 */
+}
+.iconGreen {
+  color: #10b981; /* text-green-500 */
+}
+.iconIndigo {
+  color: #6366f1; /* text-indigo-500 */
+}
+
+.contentGrid {
+  display: grid;
+  gap: 1.5rem; /* gap-6 */
+  grid-template-columns: repeat(1, minmax(0, 1fr)); /* grid-cols-1 */
+}
+
+@media (min-width: 1024px) { /* lg:grid-cols-2 */
+  .contentGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* List improvements */
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.listContainer > *:not([hidden]) ~ *:not([hidden]) {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.listItem {
+  display: flex;
+  gap: 0.875rem;
+  padding: 0.875rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  background-color: #fff;
+  border: 1px solid var(--gray-100);
+  box-shadow: 0 1px 4px 0 rgba(16,30,54,0.04);
+}
+
+.listItem:hover {
+  background-color: var(--gray-50);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.listItemLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.listItemContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.25rem;
+}
+
+.listItemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.listItemTitle {
+  font-weight: 600;
+  color: var(--gray-800);
+  font-size: 1rem;
+}
+
+.listItemDesc {
+  font-size: 0.95rem;
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+
+.listItemFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.listItemTime {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Status badges */
+.statusBadge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  box-shadow: 0 1px 2px 0 rgba(16,30,54,0.04);
+}
+
+.statusWarning {
+  background-color: var(--warning-light);
+  color: var(--warning);
+}
+
+.statusDanger {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+.statusInfo {
+  background-color: #e0f2fe;
+  color: #0ea5e9;
+}
+
+/* Chart container improvements */
+.chartContainer {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 80px;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 0.75rem;
+}
+
+/* Stat cards grid: always one row, scrollable on small screens */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(260px, 1fr));
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 1200px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+    overflow-x: auto;
+  }
+}
+
+.statsGrid::-webkit-scrollbar {
+  height: 8px;
+}
+.statsGrid::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+/* Responsive improvements */
+@media (max-width: 900px) {
+  .statCardContent {
+    padding: 1rem;
+  }
+  .listItem {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 600px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+  .listItemLeft {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+}
