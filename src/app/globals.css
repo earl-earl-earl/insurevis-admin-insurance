@@ -33,6 +33,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--gray-50);
   color: var(--gray-700);
+  transition: background 0.2s, color 0.2s;
 }
 
 code {
@@ -42,4 +43,8 @@ code {
 
 * {
   box-sizing: border-box;
+}
+
+a i, button i, .actionButton i {
+  text-decoration: none !important;
 }

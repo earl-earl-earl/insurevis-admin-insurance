@@ -6,9 +6,10 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Table, Thead, Tbody, Tr, Th, Td } from '@/components/ui/table';
 import Pagination from '@/components/ui/pagination';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './page.module.css';
+import { Filter, PlusCircle } from 'lucide-react';
 
 // Update the clients data to reflect vehicle owners
 const clients = [
@@ -159,28 +160,36 @@ const clients = [
 ];
 
 export default function ClientsPage() {
+  // Dynamic state for search, filter, and pagination
+  const [search, setSearch] = useState('');
+  const [statusFilter, setStatusFilter] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const itemsPerPage = 5;
 
-  // Calculate pagination
-  const totalPages = Math.ceil(clients.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentClients = clients.slice(startIndex, endIndex);
+  // Filter clients by search and status
+  const filteredClients = clients.filter(client => {
+    const matchesSearch =
+      client.name.toLowerCase().includes(search.toLowerCase()) ||
+      client.email.toLowerCase().includes(search.toLowerCase()) ||
+      client.policyNumber.toLowerCase().includes(search.toLowerCase());
+    const matchesStatus = statusFilter === 'All' || client.status === statusFilter;
+    return matchesSearch && matchesStatus;
+  });
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
+  // Pagination logic
+  const totalPages = Math.ceil(filteredClients.length / itemsPerPage);
+  const paginatedClients = filteredClients.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
-  const handlePrevious = () => {
-    setCurrentPage(prev => Math.max(prev - 1, 1));
-  };
+  const handlePageChange = (page: number) => setCurrentPage(page);
+  const handlePrevious = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
+  const handleNext = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
 
-  const handleNext = () => {
-    setCurrentPage(prev => Math.min(prev + 1, totalPages));
-  };
+  // Reset to page 1 when filters/search change
+  useEffect(() => { setCurrentPage(1); }, [search, statusFilter]);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleToggleStatus = (clientId: string, currentStatus: string) => {
     console.log(`Toggling status for client ${clientId}. Current: ${currentStatus}`);
     // API call to update client status
@@ -203,13 +212,22 @@ export default function ClientsPage() {
     // Implement contact functionality
   };
 
+  const handleAddClient = () => {
+    console.log('Add new client clicked');
+    // Logic to add a new client
+  };
+
   return (
     <div className={styles.pageContainer}>
       <div className={styles.pageHeader}>
         <h1 className={styles.pageTitle}>Policyholders</h1>
-        <Button onClick={() => console.log('Add new client clicked')}>
-          <i className="fa-regular fa-circle-plus"></i>
-          <span className={styles.buttonText}>Add New Policyholder</span>
+        <Button
+          onClick={handleAddClient}
+          aria-label="Add new policyholder"
+          title="Add new policyholder"
+        >
+          <PlusCircle className={styles.actionButtonIcon} />
+          New Policyholder
         </Button>
       </div>
 
@@ -218,16 +236,28 @@ export default function ClientsPage() {
           <h3 className={styles.cardTitle}>All Policyholders</h3>
           <div className={styles.filterControls}>
             <div className={styles.searchWrapper}>
+              <Input
+                type="search"
+                placeholder="Search policyholders..."
+                className={styles.searchInput}
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                aria-label="Search policyholders"
+              />
               <i className="fa-regular fa-magnifying-glass"></i>
-              <Input type="search" placeholder="Search policyholders..." className={styles.searchInput} />
             </div>
-            <Button variant="ghost" className={styles.filterButton}>
-              <i className="fa-regular fa-filter mr-2"></i>
-              Filters
+            <Button
+              variant="ghost"
+              aria-label="Show filter options"
+              title="Show filter options"
+              onClick={() => setStatusFilter(statusFilter === 'All' ? 'Active' : 'All')}
+            >
+              <Filter className={styles.actionButtonIcon} />
+              {statusFilter === 'All' ? 'Active Only' : 'Show All'}
             </Button>
           </div>
         </CardHeader>
-        <CardContent className={styles.tableCardContent}>
+        <CardContent>
           <div className={styles.tableContainer}>
             <Table>
               <Thead>
@@ -241,7 +271,7 @@ export default function ClientsPage() {
                 </Tr>
               </Thead>
               <Tbody>
-                {currentClients.map((client) => (
+                {paginatedClients.map((client) => (
                   <Tr key={client.id}>
                     <Td>
                       <div className={styles.policyInfo}>
@@ -319,16 +349,20 @@ export default function ClientsPage() {
                         >
                           <i className="fa-regular fa-envelope"></i>
                         </button>
-                        <button aria-label='button'
-                          className={styles.actionButton} 
+                        <button
+                          className={`${styles.actionButton} ${styles.editAction}`}
                           onClick={() => handleEditClient(client.id)}
+                          aria-label="Edit policyholder"
+                          title="Edit policyholder"
                           data-tooltip="Edit"
                         >
                           <i className="fa-regular fa-pen-to-square"></i>
                         </button>
-                        <button aria-label='button'
+                        <button
                           className={`${styles.actionButton} ${styles.deleteAction}`}
                           onClick={() => handleDeleteClient(client.id)}
+                          aria-label="Delete policyholder"
+                          title="Delete policyholder"
                           data-tooltip="Delete"
                         >
                           <i className="fa-regular fa-trash-can"></i>
@@ -340,12 +374,10 @@ export default function ClientsPage() {
               </Tbody>
             </Table>
           </div>
-          
-          {/* Pagination Component */}
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
-            totalItems={clients.length}
+            totalItems={filteredClients.length}
             itemsPerPage={itemsPerPage}
             onPageChange={handlePageChange}
             onPrevious={handlePrevious}

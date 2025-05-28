@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Table, Thead, Tbody, Tr, Th, Td } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 import styles from './page.module.css';
 
@@ -35,7 +36,42 @@ const topAgents = [
 
 export default function ReportsPage() {
   const [reportPeriod, setReportPeriod] = useState('monthly');
-  
+  // Dynamic state for search and pagination
+  const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
+  const pageSize = 3;
+
+  // Filter months by search
+  const filteredMonths = monthlyClaimsData.filter(item =>
+    item.month.toLowerCase().includes(search.toLowerCase())
+  );
+  const totalPages = Math.ceil(filteredMonths.length / pageSize);
+  const paginatedData = filteredMonths.slice((page - 1) * pageSize, page * pageSize);
+
+  // Calculate summary row for monthly claims
+  const summary = filteredMonths.reduce(
+    (acc, item) => {
+      acc.total += item.total;
+      acc.approved += item.approved;
+      acc.rejected += item.rejected;
+      acc.pending += item.pending;
+      acc.avgProcessingDays += item.avgProcessingDays;
+      // Remove currency symbol and commas for sum
+      acc.totalPayout += Number(item.totalPayout.replace(/[^\d.]/g, ''));
+      return acc;
+    },
+    { total: 0, approved: 0, rejected: 0, pending: 0, avgProcessingDays: 0, totalPayout: 0 }
+  );
+  summary.avgProcessingDays = filteredMonths.length ? parseFloat((summary.avgProcessingDays / filteredMonths.length).toFixed(1)) : 0;
+  const formattedTotalPayout = `₱${summary.totalPayout.toLocaleString()}`;
+
+  // Agent avatar generator (placeholder)
+  const getAvatar = (name: string) => (
+    <span className={styles.agentAvatar} aria-label={name}>
+      <i className="fa-solid fa-user"></i>
+    </span>
+  );
+
   return (
     <div className={styles.pageContainer}>
       <div className={styles.pageHeader}>
@@ -44,28 +80,34 @@ export default function ReportsPage() {
           <Button 
             variant={reportPeriod === 'monthly' ? 'primary' : 'ghost'}
             onClick={() => setReportPeriod('monthly')}
+            aria-label="Show monthly report"
+            title="Show monthly report"
           >
-            Monthly
+            <i className={`fa-regular fa-calendar ${styles.iconMarginRight4}`}></i> Monthly
           </Button>
           <Button 
             variant={reportPeriod === 'quarterly' ? 'primary' : 'ghost'}
             onClick={() => setReportPeriod('quarterly')}
+            aria-label="Show quarterly report"
+            title="Show quarterly report"
           >
-            Quarterly
+            <i className={`fa-regular fa-calendar-days ${styles.iconMarginRight4}`}></i> Quarterly
           </Button>
           <Button 
             variant={reportPeriod === 'yearly' ? 'primary' : 'ghost'}
             onClick={() => setReportPeriod('yearly')}
+            aria-label="Show yearly report"
+            title="Show yearly report"
           >
-            Yearly
+            <i className={`fa-regular fa-calendar-check ${styles.iconMarginRight4}`}></i> Yearly
           </Button>
-          <Button variant="secondary" className={styles.exportButton}>
-            <i className="fa-regular fa-download"></i>
+          <Button variant="secondary" className={styles.exportButton} aria-label="Export report" title="Export report as CSV or PDF">
+            <i className={`fa-regular fa-download ${styles.iconMarginRight4}`}></i>
             <span className={styles.exportText}>Export</span>
           </Button>
         </div>
       </div>
-      
+      <hr className={styles.divider} />
       <div className={styles.statsGrid}>
         <Card>
           <CardContent className={styles.statCardContent}>
@@ -111,29 +153,40 @@ export default function ReportsPage() {
           </CardContent>
         </Card>
       </div>
-
       <div className={styles.contentGrid}>
         <Card>
           <CardHeader>
-            <h3 className={styles.cardTitle}>Monthly Claims Summary</h3>
+            <h3 className={styles.cardTitle}><i className={`fa-regular fa-table ${styles.iconMarginRight8}`}></i>Monthly Claims Summary</h3>
+            <span className={styles.sectionSubtitle}>Overview of claims and payouts by month</span>
+            <div className={`${styles.searchWrapper} ${styles.monthSearchWrapper}`}>
+              <Input
+                type="search"
+                placeholder="Search month..."
+                className={styles.searchInput}
+                value={search}
+                onChange={e => { setSearch(e.target.value); setPage(1); }}
+                aria-label="Search month"
+              />
+              <i className="fa-regular fa-magnifying-glass"></i>
+            </div>
           </CardHeader>
           <CardContent>
             <div className={styles.tableContainer}>
               <Table>
                 <Thead>
                   <Tr>
-                    <Th>Month</Th>
-                    <Th>Total Claims</Th>
-                    <Th>Approved</Th>
-                    <Th>Rejected</Th>
-                    <Th>Pending</Th>
-                    <Th>Avg. Processing</Th>
-                    <Th>Total Payout</Th>
+                    <Th><i className={`fa-regular fa-calendar ${styles.iconMarginRight4}`}></i>Month</Th>
+                    <Th><i className={`fa-regular fa-file-lines ${styles.iconMarginRight4}`}></i>Total Claims</Th>
+                    <Th><i className={`fa-regular fa-circle-check ${styles.iconMarginRight4}`}></i>Approved</Th>
+                    <Th><i className={`fa-regular fa-circle-xmark ${styles.iconMarginRight4}`}></i>Rejected</Th>
+                    <Th><i className={`fa-regular fa-clock ${styles.iconMarginRight4}`}></i>Pending</Th>
+                    <Th><i className={`fa-regular fa-hourglass-half ${styles.iconMarginRight4}`}></i>Avg. Processing</Th>
+                    <Th><i className={`fa-regular fa-peso-sign ${styles.iconMarginRight4}`}></i>Total Payout</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {monthlyClaimsData.map((item) => (
-                    <Tr key={item.month}>
+                  {paginatedData.map((item, idx) => (
+                    <Tr key={item.month} className={idx % 2 === 0 ? styles.zebraRow : ''}>
                       <Td>{item.month}</Td>
                       <Td>{item.total}</Td>
                       <Td>{item.approved}</Td>
@@ -143,31 +196,62 @@ export default function ReportsPage() {
                       <Td>{item.totalPayout}</Td>
                     </Tr>
                   ))}
+                  <Tr className={styles.summaryRow}>
+                    <Td><b>Total</b></Td>
+                    <Td><b>{summary.total}</b></Td>
+                    <Td><b>{summary.approved}</b></Td>
+                    <Td><b>{summary.rejected}</b></Td>
+                    <Td><b>{summary.pending}</b></Td>
+                    <Td><b>{summary.avgProcessingDays} days</b></Td>
+                    <Td><b>{formattedTotalPayout}</b></Td>
+                  </Tr>
                 </Tbody>
               </Table>
+              {/* Pagination controls */}
+              <div className={styles.paginationContainer}>
+                <Button
+                  variant="ghost"
+                  onClick={() => setPage(page - 1)}
+                  disabled={page === 1}
+                  aria-label="Previous page"
+                >
+                  <i className="fa-solid fa-chevron-left"></i>
+                </Button>
+                <span className={styles.paginationInfo}>
+                  Page {page} of {totalPages}
+                </span>
+                <Button
+                  variant="ghost"
+                  onClick={() => setPage(page + 1)}
+                  disabled={page === totalPages}
+                  aria-label="Next page"
+                >
+                  <i className="fa-solid fa-chevron-right"></i>
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>
-
         <div className={styles.twoColumnGrid}>
           <Card>
             <CardHeader>
-              <h3 className={styles.cardTitle}>Damage Type Analysis</h3>
+              <h3 className={styles.cardTitle}><i className={`fa-regular fa-car-crash ${styles.iconMarginRight8}`}></i>Damage Type Analysis</h3>
+              <span className={styles.sectionSubtitle}>Most common claim types and vehicles</span>
             </CardHeader>
             <CardContent>
               <div className={styles.tableContainer}>
                 <Table>
                   <Thead>
                     <Tr>
-                      <Th>Damage Type</Th>
-                      <Th>Count</Th>
-                      <Th>Avg. Cost</Th>
-                      <Th>Common Vehicle</Th>
+                      <Th><i className={`fa-regular fa-car ${styles.iconMarginRight4}`}></i>Damage Type</Th>
+                      <Th><i className={`fa-regular fa-hashtag ${styles.iconMarginRight4}`}></i>Count</Th>
+                      <Th><i className={`fa-regular fa-peso-sign ${styles.iconMarginRight4}`}></i>Avg. Cost</Th>
+                      <Th><i className={`fa-regular fa-car-side ${styles.iconMarginRight4}`}></i>Common Vehicle</Th>
                     </Tr>
                   </Thead>
                   <Tbody>
-                    {damageReports.map((item) => (
-                      <Tr key={item.type}>
+                    {damageReports.map((item, idx) => (
+                      <Tr key={item.type} className={idx % 2 === 0 ? styles.zebraRow : ''}>
                         <Td>{item.type}</Td>
                         <Td>{item.count}</Td>
                         <Td>{item.avgCost}</Td>
@@ -179,26 +263,26 @@ export default function ReportsPage() {
               </div>
             </CardContent>
           </Card>
-          
           <Card>
             <CardHeader>
-              <h3 className={styles.cardTitle}>Top Insurance Agents</h3>
+              <h3 className={styles.cardTitle}><i className={`fa-regular fa-user-tie ${styles.iconMarginRight8}`}></i>Top Insurance Agents</h3>
+              <span className={styles.sectionSubtitle}>Best performing agents by claims</span>
             </CardHeader>
             <CardContent>
               <div className={styles.tableContainer}>
                 <Table>
                   <Thead>
                     <Tr>
-                      <Th>Agent Name</Th>
-                      <Th>Claims</Th>
-                      <Th>Approval Rate</Th>
-                      <Th>Processing Time</Th>
+                      <Th><i className={`fa-regular fa-user ${styles.iconMarginRight4}`}></i>Agent Name</Th>
+                      <Th><i className={`fa-regular fa-file-lines ${styles.iconMarginRight4}`}></i>Claims</Th>
+                      <Th><i className={`fa-regular fa-circle-check ${styles.iconMarginRight4}`}></i>Approval Rate</Th>
+                      <Th><i className={`fa-regular fa-clock ${styles.iconMarginRight4}`}></i>Processing Time</Th>
                     </Tr>
                   </Thead>
                   <Tbody>
-                    {topAgents.map((agent) => (
-                      <Tr key={agent.name}>
-                        <Td>{agent.name}</Td>
+                    {topAgents.map((agent, idx) => (
+                      <Tr key={agent.name} className={idx % 2 === 0 ? styles.zebraRow : ''}>
+                        <Td style={{display:'flex',alignItems:'center',gap:8}}>{getAvatar(agent.name)}<span>{agent.name}</span></Td>
                         <Td>{agent.claims}</Td>
                         <Td>{agent.approvalRate}</Td>
                         <Td>{agent.avgProcessingTime}</Td>

@@ -1,28 +1,27 @@
 .pageContainer {
-  /* space-y-6 */
-}
-.pageContainer > *:not([hidden]) ~ *:not([hidden]) {
-  margin-top: 1.5rem;
-  margin-bottom: 0;
+  background: var(--gray-50);
+  min-height: 100vh;
+  padding: 2rem 0;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.pageHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .pageTitle {
-  font-size: 1.875rem; /* text-3xl */
-  line-height: 2.25rem;
-  font-weight: 600; /* font-semibold */
-  color: #1f2937; /* text-gray-800 */
-}
-
-.actionButtonIcon {
-  width: 1rem; /* w-4 */
-  height: 1rem; /* h-4 */
-  margin-right: 0.5rem; /* mr-2 */
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
 }
 
 .cardHeader {
@@ -30,10 +29,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem; /* gap-4 */
+  gap: 1rem;
 }
-
-@media (min-width: 768px) { /* md:flex-row md:items-center */
+@media (min-width: 768px) {
   .cardHeader {
     flex-direction: row;
     align-items: center;
@@ -41,91 +39,44 @@
 }
 
 .cardTitle {
-  font-size: 1.125rem; /* text-lg */
-  line-height: 1.75rem;
-  font-weight: 600; /* font-semibold */
-  color: #374151; /* text-gray-700 */
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
 }
 
 .filterControls {
   display: flex;
-  align-items: center;
-  width: 100%;
-}
-.filterControls > *:not([hidden]) ~ *:not([hidden]) {
-  margin-left: 0.5rem; /* space-x-2 */
-  margin-right: 0;
+  gap: 0.75rem;
 }
 
-@media (min-width: 768px) { /* md:w-auto */
-  .filterControls {
-    width: auto;
-  }
+.searchWrapper {
+  position: relative;
+  max-width: 22rem;
+}
+
+.searchWrapper i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-400);
+  font-size: 1.1rem;
+  pointer-events: none;
 }
 
 .searchInput {
-  max-width: 20rem; /* max-w-xs (320px) */
+  width: 20rem;
+  padding-left: 2.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--gray-200);
+  font-size: 1rem;
+  background: var(--gray-50);
+  transition: border 0.2s;
 }
-
-.statusBadge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-.statusConfirmed, .statusActive {
-  background-color: var(--success-light);
-  color: var(--success);
-}
-
-.statusPending {
-  background-color: var(--warning-light);
-  color: var(--warning);
-}
-
-.statusCancelled {
-  background-color: var(--danger-light);
-  color: var(--danger);
-}
-
-.actionsCell {
-  /* space-x-1 */
-}
-.actionsCell > *:not([hidden]) ~ *:not([hidden]) {
-  margin-left: 0.25rem;
-  margin-right: 0;
-}
-
-.toggleIconActive {
-  width: 1.25rem; /* w-5 */
-  height: 1.25rem; /* h-5 */
-  color: #10b981; /* text-green-600 */
-}
-
-.toggleIconInactive {
-  width: 1.25rem; /* w-5 */
-  height: 1.25rem; /* h-5 */
-  color: #6b7280; /* text-gray-500 */
-}
-
-.editIcon {
-  width: 1rem; /* w-4 */
-  height: 1rem; /* h-4 */
-}
-
-.deleteButton {
-  color: #dc2626; /* text-red-600 */
-}
-
-.deleteButton:hover {
-  color: #b91c1c; /* hover:text-red-700 */
-}
-
-.deleteIcon {
-  width: 1rem; /* w-4 */
-  height: 1rem; /* h-4 */
+.searchInput:focus {
+  border: 1.5px solid var(--primary-color);
+  outline: none;
+  background: #fff;
 }
 
 .tableCardContent {
@@ -136,14 +87,41 @@
   overflow-x: auto;
   width: 100%;
 }
+.tableContainer table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1px 4px 0 rgba(16,30,54,0.04);
+}
+.tableContainer th, .tableContainer td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--gray-200);
+  font-size: 1.05rem;
+}
+.tableContainer th {
+  background: var(--gray-100);
+  color: var(--gray-600);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+.tableContainer tr:last-child td {
+  border-bottom: none;
+}
+.tableContainer tr:hover td {
+  background: var(--gray-50);
+  transition: background 0.2s;
+}
 
-/* User info styling */
 .userInfo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
-
 .userAvatar {
   width: 2.5rem;
   height: 2.5rem;
@@ -154,30 +132,22 @@
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 1rem;
+  box-shadow: 0 1px 4px 0 rgba(16,30,54,0.08);
 }
-
 .userDetails {
   display: flex;
   flex-direction: column;
 }
-
 .userName {
   font-weight: 600;
   color: var(--gray-800);
+  font-size: 1rem;
 }
-
 .userEmail {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--gray-500);
-}
-
-/* Cell styling */
-.idCell {
-  font-family: monospace;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--gray-500);
+  margin-top: 0.1rem;
 }
 
 .metaInfo {
@@ -185,14 +155,13 @@
   flex-direction: column;
   gap: 0.125rem;
 }
-
 .primaryText {
   font-weight: 500;
   color: var(--gray-800);
+  font-size: 0.95rem;
 }
-
 .secondaryText {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   color: var(--gray-500);
 }
 
@@ -200,83 +169,185 @@
   display: flex;
   align-items: center;
   gap: 0.375rem;
-  font-size: 0.8125rem;
+  font-size: 0.95rem;
   color: var(--gray-600);
 }
 
-/* Status badge styling */
 .statusBadge {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
   padding: 0.25rem 0.5rem;
   border-radius: 9999px;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   font-weight: 500;
 }
-
 .statusActive {
   background-color: #ECFDF5;
   color: #059669;
 }
-
 .statusInactive {
   background-color: #F3F4F6;
   color: #6B7280;
 }
 
-/* Action buttons styling */
 .actionsHeader {
   text-align: center;
 }
-
 .actionsCell {
   text-align: center;
 }
-
 .actionButtons {
   display: flex;
   justify-content: center;
   gap: 0.375rem;
 }
-
 .actionButton {
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
   background: transparent;
   border: none;
   color: var(--gray-500);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 0.15s, color 0.15s;
   position: relative;
 }
-
 .actionButton:hover {
-  background-color: var(--gray-100);
-  color: var(--gray-700);
+  background: var(--primary-light);
+  color: var(--primary-color);
+  box-shadow: 0 2px 8px 0 rgba(16,30,54,0.08);
 }
-
+.deleteAction:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
 .actionButton[data-tooltip]:hover::before {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: calc(100% + 5px);
+  bottom: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
-  padding: 0.25rem 0.5rem;
-  background-color: var(--gray-800);
-  color: white;
-  font-size: 0.75rem;
-  border-radius: 0.25rem;
+  padding: 0.4rem 0.8rem;
+  background: #111827;
+  color: #fff;
+  font-size: 0.85rem;
+  border-radius: 0.375rem;
   white-space: nowrap;
   pointer-events: none;
-  opacity: 0.9;
+  opacity: 0.95;
+  z-index: 10;
+  box-shadow: 0 2px 8px 0 rgba(16,30,54,0.10);
 }
 
-.deleteAction:hover {
-  background-color: #FEE2E2;
-  color: #DC2626;
+/* Add spacing between button icon and text */
+.actionButtonIcon {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Responsive improvements */
+@media (max-width: 900px) {
+  .tableContainer th, .tableContainer td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.95rem;
+  }
+  .userAvatar {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 600px) {
+  .header, .cardHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .searchInput {
+    width: 100%;
+  }
+}
+
+/* Dark mode overrides */
+.dark .pageContainer {
+  background: var(--gray-50);
+}
+.dark .pageTitle {
+  color: var(--gray-800);
+}
+.dark .cardTitle {
+  color: var(--gray-600);
+}
+.dark .searchInput {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-300);
+}
+.dark .searchInput:focus {
+  background: var(--gray-50);
+}
+.dark .tableContainer table {
+  background: var(--gray-100);
+}
+.dark .tableContainer th {
+  background: var(--gray-200);
+  color: var(--gray-600);
+}
+.dark .tableContainer td {
+  color: var(--gray-700);
+}
+.dark .tableContainer tr:hover td {
+  background: var(--gray-200);
+}
+.dark .userAvatar {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+}
+.dark .userName {
+  color: var(--gray-900);
+}
+.dark .userEmail {
+  color: var(--gray-500);
+}
+.dark .primaryText {
+  color: var(--gray-900);
+}
+.dark .secondaryText {
+  color: var(--gray-500);
+}
+.dark .timeInfo {
+  color: var(--gray-600);
+}
+.dark .statusActive {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+.dark .statusInactive {
+  background-color: var(--gray-200);
+  color: var(--gray-500);
+}
+.dark .actionButton {
+  color: var(--gray-500);
+}
+.dark .actionButton:hover {
+  background: var(--primary-light);
+  color: var(--primary-color);
+}
+.dark .deleteAction:hover {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+.dark .actionButton[data-tooltip]:hover::before {
+  background: var(--gray-900);
+  color: var(--gray-50);
+}
+
+.headerActions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }

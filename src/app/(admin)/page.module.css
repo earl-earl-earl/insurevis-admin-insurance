@@ -1,5 +1,8 @@
 .pageContainer {
   /* space-y-6 */
+  background: var(--gray-50);
+  min-height: 100vh;
+  padding: 2rem 0;
 }
 .pageContainer > *:not([hidden]) ~ *:not([hidden]) {
   margin-top: 1.5rem;
@@ -13,29 +16,22 @@
   color: #1f2937; /* text-gray-800 */
 }
 
-.statsGrid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+/* Card shadow and rounded corners */
+.Card, .cardHeader, .cardTitle, .cardContent, .CardContent {
+  box-shadow: 0 2px 8px 0 rgba(16,30,54,0.06);
+  border-radius: 0.75rem;
+  background: #fff;
 }
 
-@media (min-width: 768px) {
-  .statsGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1024px) {
-  .statsGrid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
+/* Stat card improvements */
 .statCardContent {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 1px 4px 0 rgba(16,30,54,0.04);
 }
 
 .statInfo {
@@ -81,10 +77,9 @@
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  background-color: #e6f0ff;
-  color: #0d6efd;
+  background-color: #E6F0FF;
+  color: #0D6EFD;
   border-radius: 0.5rem;
-  flex-shrink: 0;
 }
 
 /* Icon colors - these would ideally be handled by passing a class or style prop to the icon if possible */
@@ -113,8 +108,11 @@
   }
 }
 
+/* List improvements */
 .listContainer {
-  /* space-y-2 */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 .listContainer > *:not([hidden]) ~ *:not([hidden]) {
   margin-top: 0.5rem;
@@ -129,12 +127,13 @@
   transition: all 0.2s ease;
   background-color: #fff;
   border: 1px solid var(--gray-100);
+  box-shadow: 0 1px 4px 0 rgba(16,30,54,0.04);
 }
 
 .listItem:hover {
   background-color: var(--gray-50);
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .listItemLeft {
@@ -146,7 +145,7 @@
   border-radius: 0.5rem;
   background-color: var(--primary-light);
   color: var(--primary-color);
-  font-size: 1rem;
+  font-size: 1.2rem;
   flex-shrink: 0;
 }
 
@@ -168,11 +167,11 @@
 .listItemTitle {
   font-weight: 600;
   color: var(--gray-800);
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .listItemDesc {
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   color: var(--gray-600);
   line-height: 1.5;
 }
@@ -185,7 +184,7 @@
 }
 
 .listItemTime {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   color: var(--gray-500);
   display: flex;
   align-items: center;
@@ -195,12 +194,13 @@
 /* Status badges */
 .statusBadge {
   display: inline-block;
-  padding: 0.25rem 0.5rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 9999px;
-  font-size: 0.675rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.025em;
+  box-shadow: 0 1px 2px 0 rgba(16,30,54,0.04);
 }
 
 .statusWarning {
@@ -218,10 +218,68 @@
   color: #0ea5e9;
 }
 
+/* Chart container improvements */
 .chartContainer {
   margin-top: 0.5rem;
   width: 100%;
-  height: 80px; /* Explicit height is crucial */
+  height: 80px;
   border-top: 1px solid #f3f4f6;
   padding-top: 0.75rem;
+}
+
+/* Stat cards grid: always one row, scrollable on small screens */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(260px, 1fr));
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 1200px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+    overflow-x: auto;
+  }
+}
+
+.statsGrid::-webkit-scrollbar {
+  height: 8px;
+}
+.statsGrid::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+/* Responsive improvements */
+@media (max-width: 900px) {
+  .statCardContent {
+    padding: 1rem;
+  }
+  .listItem {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 600px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+  }
+  .listItemLeft {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
 }

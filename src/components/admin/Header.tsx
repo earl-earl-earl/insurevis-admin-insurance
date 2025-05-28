@@ -2,11 +2,28 @@
 // components/admin/Header.tsx
 'use client';
 import { usePathname } from 'next/navigation';
+
 import styles from './Header.module.css';
 
 export default function Header() {
   const pathname = usePathname();
-  
+  // Dark mode state
+  // const [darkMode, setDarkMode] = useState(false);
+
+  // useEffect(() => {
+  //   const isDark = document.body.classList.contains('dark') ||
+  //     window.matchMedia('(prefers-color-scheme: dark)').matches;
+  //   setDarkMode(isDark);
+  // }, []);
+
+  // useEffect(() => {
+  //   if (darkMode) {
+  //     document.body.classList.add('dark');
+  //   } else {
+  //     document.body.classList.remove('dark');
+  //   }
+  // }, [darkMode]);
+
   // Map routes to their corresponding titles
   const getTitle = () => {
     if (pathname === '/') return 'Dashboard';
@@ -37,6 +54,7 @@ export default function Header() {
           <i className={`fa-regular fa-calendar ${styles.calendarIcon}`}></i>
           <span>{new Date().toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' })}</span>
         </div>
+        
       </div>
     </header>
   );
