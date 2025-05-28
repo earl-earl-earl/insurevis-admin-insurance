@@ -190,10 +190,10 @@ export default function ClientsPage() {
   // Reset to page 1 when filters/search change
   useEffect(() => { setCurrentPage(1); }, [search, statusFilter]);
 
-  const handleToggleStatus = (clientId: string, currentStatus: string) => {
-    console.log(`Toggling status for client ${clientId}. Current: ${currentStatus}`);
-    // API call to update client status
-  };
+  // const handleToggleStatus = (clientId: string, currentStatus: string) => {
+  //   console.log(`Toggling status for client ${clientId}. Current: ${currentStatus}`);
+  //   // API call to update client status
+  // };
 
   const handleEditClient = (clientId: string) => {
     console.log(`Editing client ${clientId}`);
